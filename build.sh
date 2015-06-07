@@ -1,23 +1,21 @@
-
 # CLEAN
 rm dist/* -Rf
 
-# NASM
-nasm -f bin -o dist/boot0.bin src/boot0/boot0.asm
-nasm -f elf -o dist/boot1.o src/boot1/boot1.asm
+# ASSEMBLY
+nasm -f elf -o dist/boot1.o src/boot/boot1.asm
+nasm -f bin -o dist/boot0.bin src/boot/boot0.asm
 
-# C Kernel
-i586-elf-gcc -m32 -std=c99 -ffreestanding -O2 -Wall -Wextra -c src/kernel/kernel.c -o dist/kernel.o
+# GCC
+i586-elf-gcc -nostdlib -nostdinc -ffreestanding -o dist/kernel.o -c src/kernel/kernel.c
 
 # LINK
-i586-elf-ld --oformat binary -Ttext 0x1000 -m elf_i386 -o dist/kernel.bin dist/boot1.o dist/kernel.o
+i586-elf-ld -Ttext 0x1000 -o dist/kernel.bin dist/boot1.o dist/kernel.o --oformat binary
 
-# FILL ZEROS
-SIZE=$(wc -c <"dist/kernel.bin")
-dd if=/dev/zero bs=1 count=$((8192 - $SIZE)) >> dist/kernel.bin
+# MERGE
+cat dist/boot0.bin dist/kernel.bin > dist/kernel.img
 
-# MERGE BINARIES
-cat dist/boot0.bin dist/kernel.bin > dist/ckernel.bin
+# FILL FLOPPY
+dd if='/dev/zero' of='dist/floppy.img' bs='512' count='2880'
+dd if='dist/kernel.img' of='dist/floppy.img'
 
-# COPY FOR IMG
-cp dist/ckernel.bin dist/ckernel.img
+rm dist/kernel.img
