@@ -19,4 +19,5 @@ ckernel.bin: dist/boot0.bin dist/boot1.bin
 	cat dist/boot0.bin dist/boot1.bin > dist/$@
 
 ckernel.img: dist/ckernel.bin
-	cp $< dist/$@
+	dd if='/dev/zero' of='dist/$@' bs='512' count='2880'
+	dd if='$<' of='dist/$@'
