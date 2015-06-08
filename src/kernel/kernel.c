@@ -148,9 +148,6 @@ void installIDT() {
 // ### END INTERRUPT HANDLER ###
 
 void initKernel() {
-
-	__asm__ volatile("sti");
-
 	installIDT();
 	clearScreen();
 

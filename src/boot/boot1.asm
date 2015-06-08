@@ -8,6 +8,8 @@ global irq1
 global idt_load
 
 _start:
+	sti
+
 	call initKernel
 
 	jmp $
