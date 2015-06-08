@@ -64,8 +64,17 @@ void print(const char* _message) {
 	setCursorPositon(offset);
 }
 
+void println(const char* _message) {
+	print(_message);
+
+	unsigned short offset = getCursorPosition();
+	short subtract = VGA_WIDTH - (offset % VGA_WIDTH);
+	setCursorPositon(offset + subtract);
+}
+
 void initKernel() {
 	clearScreen();
 
-	print("Herzlich Willkommen auf dem C++ Kernel von PaulGap <3");
+	println("Herzlich Willkommen auf dem C++ Kernel von PaulGap <3");
+	println("Und das ist die zweite Zeile :D");
 }
