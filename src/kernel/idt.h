@@ -1,7 +1,7 @@
 #pragma once
-
 #include "ports.h"
 #include "util.h"
+#include "keyboard.h"
 
 struct idt_entry {
 	unsigned short offset_low;
