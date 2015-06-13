@@ -26,4 +26,4 @@ extern void irq1();
 
 void setISR(unsigned char int_num, unsigned long base, unsigned short sel, unsigned char flags);
 void remapIRQ();
-void installIDT();
+void initIDT();

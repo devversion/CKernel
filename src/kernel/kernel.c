@@ -1,11 +1,13 @@
 #include "ports.h"
 #include "idt.h"
 #include "display.h"
+#include "rtc.h"
 
 void initKernel() {
-	installIDT();
-	clearScreen();
+	printLine("--- START KERNEL INITIALIZATION ---");
 
-	printLine("Herzlich Willkommen auf dem C++ Kernel von PaulGap <3");
-	printLine("Und das ist die zweite Zeile :D");
+	initIDT();
+	initRTC();
+
+	printLine("--- END KERNEL INITIALIZATION ---");
 }

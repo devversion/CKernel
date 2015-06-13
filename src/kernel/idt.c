@@ -21,7 +21,9 @@ void remapIRQ() {
 	out(0xA1, 0x0);
 }
 
-void installIDT() {
+void initIDT() {
+	printLine("IDT: Starting initialization...");
+
 	idtp.limit = (sizeof (struct idt_entry) * 256) - 1;
 	idtp.base = (int) &idt;
 
@@ -35,4 +37,6 @@ void installIDT() {
 
 	// ENABLE KEYBOARD IRQ1
 	out(0x21 , 0xFD);
+
+	printLine("IDT: Initialization completed.");
 }
