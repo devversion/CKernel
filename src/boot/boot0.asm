@@ -3,6 +3,10 @@
 
 global start
 start:
+	; CLEAR SCREEN
+    mov ax, 0003h
+    int 10h 
+
 	; STACK POINT
 	mov bp, 0x8000
 	mov sp, bp
