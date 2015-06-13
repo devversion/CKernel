@@ -17,3 +17,33 @@ void initRTC() {
 	
 	printLine("RTC: Initialization completed.");
 }
+
+int getSeconds() {
+	out(0x70, 0);
+	return convertBCD(in(0x71));
+}
+
+int getMinutes() {
+	out(0x70, 0x02);
+	return convertBCD(in(0x71));
+}
+
+int getHours() {
+	out(0x70, 0x04);
+	return convertBCD(in(0x71));
+}
+
+int getDay() {
+	out(0x70, 0x07);
+	return convertBCD(in(0x71));
+}
+
+int getMonth() {
+	out(0x70, 0x08);
+	return convertBCD(in(0x71));
+}
+
+int getYear() {
+	out(0x70, 0x09);
+	return convertBCD(in(0x71));
+}

@@ -10,4 +10,10 @@ void initKernel() {
 	initRTC();
 
 	printLine("--- END KERNEL INITIALIZATION ---");
+
+	/*char buffer[10];
+	itoa(getDay(), buffer, 10);
+
+	printLine(buffer);
+*/
 }
