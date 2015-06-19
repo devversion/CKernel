@@ -34,10 +34,23 @@ void clearScreen() {
 	setCursorPositon(0);
 }
 
+void setChar(int position, unsigned char c) {
+	short offset = getCursorPosition();
+	setCursorPositon(position);
+	printChar(c);
+	setCursorPositon(offset);
+}
+
 void printChar(unsigned char c) {
-	char array[1];
-	array[0] = c;
-	printString(array);
+	unsigned char* vidmem = (unsigned char*) VGA_ADDRESS;
+	unsigned short offset = getCursorPosition();
+
+	vidmem += offset * 2;
+
+	*vidmem++ = c;
+	*vidmem++ = 0x07;
+
+	setCursorPositon(offset + 1);
 }
 
 void printString(const char* _message) {

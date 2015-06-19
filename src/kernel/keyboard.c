@@ -25,10 +25,15 @@ void callKeyboard() {
 
 	// PRINT CHAR
 	if (!(scancode & 0x80)) {
-		if (uppercase) {
-			printChar(getUpperChar(scancode));
-		} else {
-			printChar(getLowerChar(scancode));
+		unsigned char c = (uppercase ? getUpperChar(scancode) : getLowerChar(scancode));
+
+		if (c == '\b') {
+			short pos = getCursorPosition() - 1;
+			setChar(pos, ' ');
+			setCursorPositon(pos);
+			return;
 		}
+
+		printChar(c);
 	}
 }
