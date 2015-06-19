@@ -17,9 +17,9 @@ void callKeyboard() {
 			uppercase = 0;
 		}
 	} else {
-		while (scancode == 0x36 || scancode == 0x2A) {
+		if (scancode == 0x36 || scancode == 0x2A) {
 			uppercase = 1;
-			scancode = in(0x60);
+			return;
 		}
 	}
 
