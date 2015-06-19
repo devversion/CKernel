@@ -2,3 +2,4 @@
 *.img
 *.bxrc
 *.bin
+qemu/
