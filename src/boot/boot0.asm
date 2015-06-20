@@ -3,6 +3,13 @@
 
 global start
 start:
+
+	xor ax, ax
+	mov es, ax
+	mov ds, ax
+	mov ds, ax
+	mov ss, ax
+
 	; CLEAR SCREEN
     mov ax, 0003h
     int 10h 
@@ -42,19 +49,13 @@ start:
 ; METHODS
 LoadGDT:
 	cli
-	xor ax, ax
-	mov ds, ax
+
 	lgdt [gdt_desc]
+
 	mov eax, cr0
 	or eax, 1
 	mov cr0, eax
 
-	jmp 0x08:InitProtected
-
-	RET
-
-[BITS 32]
-InitProtected:
 	mov ax, DATA_SEG
 	mov ds, ax
 	mov es, ax
@@ -62,8 +63,12 @@ InitProtected:
 	mov gs, ax
 	mov ss, ax
 
-	mov ebp, 0x90000
-	mov esp, ebp
+	jmp CODE_SEG:InitProtected
+
+	RET
+
+[BITS 32]
+InitProtected:
 
 	call KERNEL_OFFSET
 
