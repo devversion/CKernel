@@ -5,6 +5,8 @@
 
 void initKernel() {
 	printLine("--- START KERNEL INITIALIZATION ---");
+	printLine("GDT: Computer running in Portected Mode.");
+	printLine("SYS: Running with 32-Bit architecture.");
 
 	initIDT();
 	initRTC();
