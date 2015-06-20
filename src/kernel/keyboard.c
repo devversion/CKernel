@@ -28,7 +28,10 @@ void callKeyboard() {
 		unsigned char c = (uppercase ? getUpperChar(scancode) : getLowerChar(scancode));
 
 		if (c == '\b') {
-			short pos = getCursorPosition() - 1;
+			const short pos = getCursorPosition() - 1;
+
+			if (pos + 1 <= 0) return;
+
 			setChar(pos, ' ');
 			setCursorPositon(pos);
 			return;
