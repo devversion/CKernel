@@ -1,3 +1,5 @@
+#include "util.h"
+
 void memset(void *addr, unsigned char value, unsigned int len) {
 	char *end = addr + len;
 	char *cur = (char *) addr;

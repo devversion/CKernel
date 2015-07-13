@@ -1,7 +1,7 @@
-#include "ports.h"
-#include "idt.h"
-#include "display.h"
-#include "rtc.h"
+#include "bridge/ports.h"
+#include "drivers/idt.h"
+#include "graphics/display.h"
+#include "drivers/rtc.h"
 
 void initKernel() {
 	printLine("--- START KERNEL INITIALIZATION ---");

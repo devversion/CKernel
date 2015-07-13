@@ -2,6 +2,7 @@ GCC = i586-elf-gcc
 LD = i586-elf-ld
 
 SRC = $(wildcard src/kernel/*.c)
+SRC += $(wildcard src/kernel/**/*.c)
 OBJ = $(SRC:.c=.o)
 
 all: preclean dist/floppy.img release start

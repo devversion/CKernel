@@ -1,3 +1,5 @@
+#include "ports.h"
+
 unsigned char in(unsigned short _port) {
 	unsigned char result;
 	__asm__ ("in %%dx, %%al" : "=a" (result) : "d" (_port));

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ports.h"
-#include "display.h"
-#include "util.h"
+#include "../bridge/ports.h"
+#include "../graphics/display.h"
+#include "../utils/util.h"
 
 void initRTC();
 

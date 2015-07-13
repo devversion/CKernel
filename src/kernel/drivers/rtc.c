@@ -1,3 +1,4 @@
+#include "rtc.h"
 
 const unsigned int RTC_ADRESS = 0x70;
 const unsigned int RTC_DATA = 0x71;

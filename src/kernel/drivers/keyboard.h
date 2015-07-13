@@ -1,5 +1,5 @@
 #pragma once
-#include "ports.h"
+#include "../bridge/ports.h"
 
 unsigned char qwertylow[128];
 unsigned char qwertyup[128];
