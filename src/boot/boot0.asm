@@ -11,8 +11,8 @@ start:
 	mov ss, ax
 
 	; CLEAR SCREEN
-    mov ax, 0003h
-    int 10h 
+	mov ax, 0003h
+	int 10h 
 
 	; STACK POINT
 	mov bp, 0x8000
