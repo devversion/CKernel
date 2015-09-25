@@ -9,6 +9,7 @@ all: preclean dist/floppy.img release start
 
 preclean: 
 	rm dist/* -Rf
+	mkdir dist/
 	rm -f src/kernel/*.o
 
 release:
